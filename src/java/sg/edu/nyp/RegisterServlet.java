@@ -11,11 +11,10 @@ import javax.ejb.Stateless;
 @Stateless
 public class RegisterServlet{
    
-    public static final long serialVersionUID = -1L;
+
     
  
-    
-    }
+}
 
    
     
