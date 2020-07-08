@@ -12,7 +12,7 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Search Product</h1>
+        <h1>Search Products</h1>
         
   
     </body>
