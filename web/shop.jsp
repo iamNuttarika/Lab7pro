@@ -13,7 +13,8 @@
     </head>
     <body>
         <h1>Search Products</h1>
-        
-  
+      <form action="search" method ="post">
+        Search:<input type="text" name="search"/><br/>
+        <input type="submit" value="SEARCH">
     </body>
 </html>
