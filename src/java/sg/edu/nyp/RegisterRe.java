@@ -6,10 +6,14 @@
 
 package sg.edu.nyp;
 
+import javax.ejb.Stateless;
+
 /**
  *
  * @author PNC
  */
+@Stateless
 public class RegisterRe {
     
+        public static final long serialVersionUID = -1L;
 }
