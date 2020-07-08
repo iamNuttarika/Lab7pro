@@ -5,15 +5,12 @@
  */
 
 package sg.edu.nyp;
-
 import javax.ejb.Stateless;
-
-/**
- *
- * @author PNC
- */
 @Stateless
-public class RegisterRe {
-    
-        public static final long serialVersionUID = -1L;
+public class CheckoutBean {
+    public boolean validate(String cc)
+    {
+        
+        return false;
+    }
 }
