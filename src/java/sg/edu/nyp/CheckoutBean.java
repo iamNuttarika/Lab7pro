@@ -9,10 +9,10 @@ import java.util.ArrayList;
 import javax.ejb.Stateless;
 @Stateless
 public class CheckoutBean {
-    public double calculateDelivery(ArrayList cart)
+    public double calculateDelivery(ArrayList cartlist)
     {
         double total = 0;
-        for(int i = 0; i < cart.size(); i++)
+        for(int i = 0; i < cartlist.size(); i++)
         {
             //total += cart.item.price();
         }
