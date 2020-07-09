@@ -18,15 +18,13 @@ and open the template in the editor.
         Name: <input type="text" name="name" required/><br/>
         Email Address: <input type="email" name="email" required/><br/>
         
-        Address 1: <input type="text" name="address1" required/><br/>
-        Address 2: <input type="text" name="address2" /><br/>
+        Address: <input type="text" name="address1" required/><br/>
                   
         Postal Code : <input type="text" pattern="^[0-9]{6}" title="Please enter a 6-digit postal code "  name="postal" required/><br/>
         
         Mobile Number :<input type="tel" pattern="^[6,8,9]{1}[0-9]{7}" name="phNum" required/><br/>
      
-        Password :<input type="password" id="password" name="password" required/><br/>
-        Reconfirm Password :<input type="password" id="repassword" name="repassword" required/><br/>
+
         
         <input type="submit" value="Register"/>
     </form>
