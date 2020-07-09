@@ -5,12 +5,25 @@
  */
 
 package sg.edu.nyp;
+import java.util.ArrayList;
 import javax.ejb.Stateless;
 @Stateless
 public class CheckoutBean {
-    public boolean validate(String cc)
+    public double calculateDelivery(ArrayList cart)
     {
+        double total = 0;
+        for(int i = 0; i < cart.size(); i++)
+        {
+            //total += cart.item.price();
+        }
         
-        return false;
+        if(total<50)
+        {
+            return 5;
+        }
+        else
+        {
+            return 0;
+        }
     }
 }
