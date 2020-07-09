@@ -23,7 +23,7 @@ import javax.sql.DataSource;
  *
  * @author lawke
  */
-@WebServlet("/order")
+@WebServlet("/confirm")
 public class ConfirmationServlet extends HttpServlet {
      @Resource(name = "jdbc/lab7")
     private DataSource dsOnlineGrocery;

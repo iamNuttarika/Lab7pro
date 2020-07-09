@@ -13,7 +13,7 @@
     </head>
     <body>
         <h1>Purchase Confirmation Page</h1>
-        <form action="/" method="POST">
+        <form action="confirm" method="POST">
             Credit Card:
             <label for="creditCard"></label>
             <input type="text" name="creditCard"/><br><br>
