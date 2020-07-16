@@ -27,7 +27,7 @@ public class CheckoutServlet extends HttpServlet {
         
         HttpSession session = request.getSession();
         
-        ArrayList<Cart> cartList = (ArrayList<Cart>) session.getAttribute("cart");
+        ArrayList<CartBean> cartList = (ArrayList<CartBean>) session.getAttribute("cart");
         int fixedCode = 9023;
         int requestCode = (int) session.getAttribute("requestCode");
         

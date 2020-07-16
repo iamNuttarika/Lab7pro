@@ -11,11 +11,13 @@
 
 package sg.edu.nyp;
 
+import javax.ejb.Stateless;
+
 
 import java.io.Serializable;
 
-
-public class Cart implements Serializable {
+@Stateless
+public class CartBean implements Serializable {
     public static final long serialVersionUID = -1L;
     private String itemDescription;
     private String item;
@@ -24,7 +26,7 @@ public class Cart implements Serializable {
     private Integer categoryId;
     private Float cost;
    
-    public Cart() {
+    public CartBean() {
     }
 
     public String getItemDescription() {
