@@ -35,7 +35,7 @@ public class CheckoutServlet extends HttpServlet {
         {
             if(cartList != null)
             {
-                double deliveryFee = checkoutBean.calculateDelivery(cartList);
+                session.setAttribute("deliveryFee", checkoutBean.calculateDelivery(cartList));
                 session.setAttribute("requestCode", 9023);
                 response.sendRedirect(this.getServletContext().getContextPath() + "/checkout.jsp");
             }

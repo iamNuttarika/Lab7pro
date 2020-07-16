@@ -1,9 +1,15 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
     int requestCode = (int) session.getAttribute("requestCode");
+    double deliveryFee = 0;
     if (requestCode != 9023)
     {
         response.sendRedirect(this.getServletContext().getContextPath() + "/checkout");
+        return;
+    }
+    else
+    {
+        deliveryFee = (double) session.getAttribute("deliveryFee");
     }
 %>
 <!DOCTYPE html>
@@ -14,8 +20,10 @@
     </head>
     <body>
         <h1>Hello World!</h1>
+        <p>delivery fee: <%= deliveryFee %></p>
     </body>
 </html>
 <%
     session.setAttribute("requestCode", null);
+    session.setAttribute("deliveryFee", null);
 %>
