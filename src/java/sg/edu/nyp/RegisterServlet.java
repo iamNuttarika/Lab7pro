@@ -55,7 +55,7 @@ public class RegisterServlet extends HttpServlet
             throws ServletException, IOException {
 
         //Create a new instance of the RegistrationRecord object
-        RegisterBean registerBean = new RegisterBean();
+        RegisterBean register = new RegisterBean();
         HttpSession session = request.getSession();
 
         /* TODO output your page here. You may use following sample code. */
@@ -69,18 +69,18 @@ public class RegisterServlet extends HttpServlet
 
         
         //Store the name in the registrationRecord object
-        registerBean.setName(name);
+        register.setName(name);
 
-        registerBean.setEmail(request.getParameter("email"));
+        register.setEmail(request.getParameter("email"));
 
-        registerBean.setAddress(request.getParameter("address"));
-        registerBean.setPostal(request.getParameter("postal"));
+        register.setAddress(request.getParameter("address"));
+        register.setPostal(request.getParameter("postal"));
 
         String phNum = request.getParameter("phNum");
         int NphNum = Integer.parseInt(phNum);
-        registerBean.setPhNum(NphNum);
+        register.setPhNum(NphNum);
 
-        registerBean.setPassword(request.getParameter("password"));
+        register.setPassword(request.getParameter("password"));
 
         //Declare the connection, statement and resultset objects
         Connection connection = null;
@@ -94,7 +94,7 @@ public class RegisterServlet extends HttpServlet
              // Get the connection from the DataSource 
             connection = dsShoppingOnline.getConnection();
             // Prepare the Statement using the Connection
-            preparedStatement = connection.prepareStatement("SELECT count(*) FROM customer WHERE email=?");
+            preparedStatement = connection.prepareStatement("SELECT count(*) FROM customer WHERE emailaddress=?");
             // Set the userinput into the prepared statement
             preparedStatement.setString(1, request.getParameter("email"));
 
@@ -115,7 +115,7 @@ public class RegisterServlet extends HttpServlet
             else{
             // non-existed email,Allow user to create account and added to database tables
             // Prepare the Statement using the Connection
-            preparedStatement = connection.prepareStatement("INSERT INTO customer (`fullname`, `email`, `addressline2`, `postalcode`, `mobile`, `password`) VALUES (?,?,?,?,?,?)");
+            preparedStatement = connection.prepareStatement("INSERT INTO customer (name, deliveryaddress, postalcode, contactnumber, emailaddress) VALUES (?,?,?,?,?)");
 
             // Set the userinput into the prepared statement
             preparedStatement.setString(1, name);
@@ -169,7 +169,7 @@ public class RegisterServlet extends HttpServlet
 
 
         if(!Emailex){
-              session.setAttribute("User", registerBean);
+              session.setAttribute("User", register);
         //Make a client-side redirect into results.jsp
         response.sendRedirect(this.getServletContext().getContextPath() + "/Orders.html");
         }
