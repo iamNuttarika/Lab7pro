@@ -18,7 +18,7 @@ and open the template in the editor.
             Name: <input type="text" name="name" required/><br/>
             Email Address: <input type="email" name="email" required/><br/>
 
-            Address: <input type="text" name="address1" required/><br/>
+            Address: <input type="text" name="address" required/><br/>
 
             Postal Code : <input type="text" pattern="^[0-9]{6}" title="Please enter a 6-digit postal code "  name="postal" required/><br/>
 

@@ -9,10 +9,13 @@ package sg.edu.nyp;
  *
  *
  */
+import java.io.Serializable;
 import javax.ejb.Stateless;
 
 @Stateless
-public class RegisterRe {
+public class RegisterBean implements Serializable {
+    
+    public static final long serialVersionUID = -1L;
 
     private int custId;
     private String name;
@@ -32,7 +35,7 @@ public class RegisterRe {
     }
     
     
-    public RegisterRe() {
+    public RegisterBean() {
     }
 
 
