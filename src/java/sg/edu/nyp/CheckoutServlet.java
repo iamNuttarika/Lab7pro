@@ -8,6 +8,7 @@ package sg.edu.nyp;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -27,7 +28,7 @@ public class CheckoutServlet extends HttpServlet {
         
         HttpSession session = request.getSession();
         
-        ArrayList<CartBean> cartList = (ArrayList<CartBean>) session.getAttribute("cart");
+        List<CartBean> cartList = (List<CartBean>) session.getAttribute("cart");
         int fixedCode = 9023;
         int requestCode = (int) session.getAttribute("requestCode");
         

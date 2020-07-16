@@ -6,15 +6,16 @@
 
 package sg.edu.nyp;
 import java.util.ArrayList;
+import java.util.List;
 import javax.ejb.Stateless;
 @Stateless
 public class CheckoutBean {
-    public double calculateDelivery(ArrayList cartlist)
+    public double calculateDelivery(List cartlist)
     {
         double total = 0;
         for(int i = 0; i < cartlist.size(); i++)
         {
-            //total += cart.item.price();
+            //total += cartlist.get(i);
         }
         
         if(total<50)
