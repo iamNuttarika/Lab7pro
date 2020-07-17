@@ -14,7 +14,11 @@ and open the template in the editor.
     <body>
 
         <b>Please Register!</b><br/><br>
-        <form name="Register" action="validate" method="post" onsubmit="return checkPass()" >
+        <form name="Register" action="RegisterServlet" method="post"  >
+            
+            <p>     <%=session.getAttribute("message")==null?"":session.getAttribute("message")%><br/></p>
+            
+            
             Name: <input type="text" name="name" required/><br/>
             Email Address: <input type="email" name="email" required/><br/>
 

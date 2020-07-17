@@ -5,86 +5,94 @@
  */
 package sg.edu.nyp;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.annotation.Resource;
+import javax.ejb.Stateless;
+import javax.sql.DataSource;
+
 /**
  *
- *
+ * @author PNC
  */
-import java.io.Serializable;
-import javax.ejb.Stateless;
 
 @Stateless
-public class RegisterBean implements Serializable {
-    
-    public static final long serialVersionUID = -1L;
+public class RegisterBean {
+  
+    @Resource(name="")
+    private DataSource dsShoppingOnline;
 
-    private int custId;
-    private String name;
-    private String email;
-    private String address;
-    private String postal;
-    private int phNum;
-    private String password;
-    
+    public String addUser(String name, String email, String address, String postal, String phNum) {
 
-    public String getPassword() {
-        return password;
-    }
+        //Declare the connection, statement and resultset objects
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultset = null;
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
-    
-    
-    public RegisterBean() {
-    }
+        try {
+            //Initialise the connection, statement and resultset 
 
+            connection = dsShoppingOnline.getConnection();
 
-    public void setCustId(int custId) {
-        this.custId = custId;
-    }
+       
 
-    public int getCustId() {
-        return custId;
-    }
+       
+            // non-existed email,Allow user to create account and added to database tables
+                // Prepare the Statement using the Connection
+                preparedStatement = connection.prepareStatement("INSERT INTO customer (name, deliveryaddress, postalcode, contactnumber, emailaddress) VALUES (?,?,?,?,?)");
 
-    public String getName() {
-        return name;
-    }
+                // Set the userinput into the prepared statement
+                preparedStatement.setString(1, name);
+                preparedStatement.setString(2, email);
+                preparedStatement.setString(3, address);
+                preparedStatement.setString(4, postal);
+                preparedStatement.setString(5, phNum);
 
-    public void setName(String name) {
-        this.name = name;
-    }
+            
 
-    public String getEmail() {
-        return email;
-    }
+                // Make a query to the DB using ResultSet through the Statement            
+                preparedStatement.executeUpdate();
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+            
 
-    public String getAddress() {
-        return address;
-    }
+        } catch (SQLException ex) {
+            //Usually, the error should be logged somewhere in the system log.
+            //Sometimes, users may also need to be notified regarding such error
+            ex.printStackTrace();
+            System.err.println(ex.getMessage());
+        } finally {
+            //Resultset, Statement and Connection are closed in the finally 
+            // clause to ensure that they will be closed no matter what 
+            // happens to the system.
+            if (resultset != null) {
+                try {
+                    resultset.close();
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                    System.err.println(ex.getMessage());
+                }
+            }
+            if (preparedStatement != null) {
+                try {
+                    preparedStatement.close();
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                    System.err.println(ex.getMessage());
+                }
+            }
+            if (connection != null) {
+                try {
+                    connection.close();
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                    System.err.println(ex.getMessage());
+                }
+            }
+        }
 
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getPostal() {
-        return postal;
-    }
-
-    public void setPostal(String postal) {
-        this.postal = postal;
-    }
-
-    public int getPhNum() {
-        return phNum;
-    }
-
-    public void setPhNum(int phNum) {
-        this.phNum = phNum;
+        return "User added";
     }
 
 }
